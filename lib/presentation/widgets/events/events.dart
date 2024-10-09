@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx_triple/mobx_triple.dart';
-import 'package:taskpal/data/dtos/query_events.dto.dart';
-import 'package:taskpal/domain/event.dart';
-import 'package:taskpal/presentation/stores/events_query_store.dart';
-import 'package:taskpal/presentation/stores/events_store.dart';
-import 'package:taskpal/presentation/widgets/events/event.dart';
+import 'package:timely/data/dtos/query_events.dto.dart';
+import 'package:timely/domain/event.dart';
+import 'package:timely/main.dart';
+import 'package:timely/presentation/stores/events_query_store.dart';
+import 'package:timely/presentation/stores/events_store.dart';
+import 'package:timely/presentation/widgets/events/event.dart';
 
 class Events extends StatelessWidget {
   Events({super.key});
-  final eventsStore = GetIt.instance<EventsStore>();
-  final eventsQueryStore = GetIt.instance<EventsQueryStore>();
+  final eventsStore = getIt<EventsStore>();
+  final eventsQueryStore = getIt<EventsQueryStore>();
 
   @override
   Widget build(BuildContext context) {

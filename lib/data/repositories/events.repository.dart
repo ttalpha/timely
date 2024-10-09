@@ -1,7 +1,7 @@
-import 'package:taskpal/data/dtos/add_event.dto.dart';
-import 'package:taskpal/data/dtos/query_events.dto.dart';
-import 'package:taskpal/data/dtos/update_event.dto.dart';
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/data/dtos/add_event.dto.dart';
+import 'package:timely/data/dtos/query_events.dto.dart';
+import 'package:timely/data/dtos/update_event.dto.dart';
+import 'package:timely/domain/event.dart';
 
 abstract class EventsRepository {
   EventsRepository();

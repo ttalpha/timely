@@ -1,4 +1,4 @@
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/domain/event.dart';
 
 class QueryEventsDto {
   QueryEventsDto({

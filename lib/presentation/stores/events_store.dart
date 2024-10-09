@@ -1,9 +1,9 @@
 import 'package:mobx_triple/mobx_triple.dart';
-import 'package:taskpal/app/events.service.dart';
-import 'package:taskpal/data/dtos/add_event.dto.dart';
-import 'package:taskpal/data/dtos/query_events.dto.dart';
-import 'package:taskpal/data/dtos/update_event.dto.dart';
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/app/events.service.dart';
+import 'package:timely/data/dtos/add_event.dto.dart';
+import 'package:timely/data/dtos/query_events.dto.dart';
+import 'package:timely/data/dtos/update_event.dto.dart';
+import 'package:timely/domain/event.dart';
 
 class EventsStore extends MobXStore<List<Event>> {
   EventsStore(this.eventsService) : super(<Event>[]);

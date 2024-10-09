@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/domain/event.dart';
 
 class EventColorsUtils {
   static MaterialColor mapColorToObject(EventColor color) {

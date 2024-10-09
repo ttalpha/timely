@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:taskpal/common/utils/event_colors.dart';
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/common/utils/event_colors.dart';
+import 'package:timely/data/dtos/update_event.dto.dart';
+import 'package:timely/domain/event.dart';
+import 'package:timely/main.dart';
+import 'package:timely/presentation/stores/events_store.dart';
 
 class EventItem extends StatelessWidget {
-  const EventItem({super.key, required this.event});
+  EventItem({super.key, required this.event});
 
   final Event event;
+
+  final _eventsStore = getIt<EventsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +67,14 @@ class EventItem extends StatelessWidget {
               child: Checkbox(
                 shape: const CircleBorder(),
                 value: event.isCompleted,
-                onChanged: (checked) {},
+                onChanged: (checked) async {
+                  await _eventsStore.updateEvent(
+                    UpdateEventDto(
+                      id: event.id,
+                      isCompleted: checked,
+                    ),
+                  );
+                },
                 activeColor: WidgetStateColor.resolveWith((states) {
                   return Color(eventColor[700]!.value);
                 }),

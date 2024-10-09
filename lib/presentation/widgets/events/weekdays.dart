@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx_triple/mobx_triple.dart';
-import 'package:taskpal/data/dtos/query_events.dto.dart';
-import 'package:taskpal/presentation/stores/events_query_store.dart';
+import 'package:timely/data/dtos/query_events.dto.dart';
+import 'package:timely/main.dart';
+import 'package:timely/presentation/stores/events_query_store.dart';
 
 class Weekdays extends StatefulWidget {
   const Weekdays({super.key});
@@ -13,7 +13,7 @@ class Weekdays extends StatefulWidget {
 }
 
 class _WeekdaysState extends State<Weekdays> {
-  final _eventsQueryStore = GetIt.instance<EventsQueryStore>();
+  final _eventsQueryStore = getIt<EventsQueryStore>();
 
   final ScrollController _scrollController = ScrollController();
   List<DateTime> dates = [];

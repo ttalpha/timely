@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:taskpal/presentation/widgets/events/weekdays.dart';
+import 'package:timely/presentation/widgets/events/weekdays.dart';
 
 class EventsAppbar extends StatefulWidget {
   const EventsAppbar({super.key});

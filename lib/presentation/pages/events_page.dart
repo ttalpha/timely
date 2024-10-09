@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:taskpal/presentation/widgets/events/appbar.dart';
-import 'package:taskpal/presentation/widgets/events/events.dart';
+import 'package:timely/presentation/widgets/events/appbar.dart';
+import 'package:timely/presentation/widgets/events/events.dart';
 
 class EventsPage extends StatelessWidget {
   const EventsPage({super.key});

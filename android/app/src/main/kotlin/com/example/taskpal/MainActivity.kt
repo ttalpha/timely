@@ -1,4 +1,4 @@
-package com.example.taskpal
+package com.example.timely
 
 import io.flutter.embedding.android.FlutterActivity
 

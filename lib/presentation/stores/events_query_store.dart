@@ -1,6 +1,6 @@
 import 'package:mobx_triple/mobx_triple.dart';
-import 'package:taskpal/data/dtos/query_events.dto.dart';
-import 'package:taskpal/domain/event.dart';
+import 'package:timely/data/dtos/query_events.dto.dart';
+import 'package:timely/domain/event.dart';
 
 class QueryEventsParams {
   QueryEventsParams({
