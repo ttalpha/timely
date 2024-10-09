@@ -25,12 +25,16 @@ class _WeekdaysState extends State<Weekdays> {
     super.initState();
 
     initializeDates();
-
+    selectToday();
     _scrollController.addListener(_onScroll);
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollController.jumpTo(itemWidth * (dates.length ~/ 2));
     });
+  }
+
+  void selectToday() {
+    DateTime today = DateTime.now();
+    _eventsQueryStore.setDateQuery(today.day, today.month, today.year);
   }
 
   void initializeDates() {
