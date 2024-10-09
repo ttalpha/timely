@@ -1,7 +1,10 @@
 import 'package:taskpal/data/datasources/local_datasource.dart';
+import 'package:taskpal/data/dtos/add_event.dto.dart';
 import 'package:taskpal/data/dtos/query_events.dto.dart';
+import 'package:taskpal/data/dtos/update_event.dto.dart';
 import 'package:taskpal/data/repositories/events.repository.dart';
 import 'package:taskpal/domain/event.dart';
+import 'package:uuid/uuid.dart';
 
 class HiveEventsRepository implements EventsRepository {
   final LocalDataSource<Event> localDataSource;
@@ -9,8 +12,18 @@ class HiveEventsRepository implements EventsRepository {
   HiveEventsRepository(this.localDataSource);
 
   @override
-  Future<void> addEvent(Event event) async {
-    await localDataSource.saveData(event.id, event);
+  Future<Event> addEvent(AddEventDto addEventDto) async {
+    const uuid = Uuid();
+    final newEvent = Event(
+      id: uuid.v4(),
+      title: addEventDto.title,
+      startTime: addEventDto.startTime,
+      endTime: addEventDto.endTime,
+      isCompleted: false,
+      color: addEventDto.color,
+    );
+    await localDataSource.saveData(newEvent.id, newEvent);
+    return newEvent;
   }
 
   @override
@@ -66,7 +79,20 @@ class HiveEventsRepository implements EventsRepository {
   }
 
   @override
-  Future<void> updateEvent(Event event) async {
-    await localDataSource.saveData(event.id, event);
+  Future<Event> updateEvent(UpdateEventDto updateEventDto) async {
+    final oldEvent = await localDataSource.findOne(updateEventDto.id);
+    if (oldEvent == null) {
+      throw Exception('Cannot find event with id: ${updateEventDto.id}');
+    }
+    final updatedEvent = Event(
+      id: oldEvent.id,
+      title: updateEventDto.title ?? oldEvent.title,
+      startTime: updateEventDto.startTime ?? oldEvent.startTime,
+      endTime: updateEventDto.endTime ?? oldEvent.endTime,
+      isCompleted: updateEventDto.isCompleted ?? oldEvent.isCompleted,
+      color: updateEventDto.color ?? oldEvent.color,
+    );
+    await localDataSource.saveData(oldEvent.id, updatedEvent);
+    return updatedEvent;
   }
 }

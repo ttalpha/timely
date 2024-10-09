@@ -28,7 +28,7 @@ class _WeekdaysState extends State<Weekdays> {
     selectToday();
     _scrollController.addListener(_onScroll);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollController.jumpTo(itemWidth * (dates.length ~/ 2));
+      _scrollController.jumpTo(itemWidth * (dates.length ~/ 2) - 16);
     });
   }
 
